@@ -61,13 +61,13 @@
   <!--Separator 0-->
   <data name='Name' xml:space='preserve'> <value>Flip Chess</value> </data>
   <data name='Version' xml:space='preserve'> <value>1.0.0</value> </data>
-  <data name='Github' xml:space='preserve'> <value>Flip-Chess-UWP</value> </data>
+  <data name='Github' xml:space='preserve'> <value>Flip-Chess-MAUI</value> </data>
   <data name='Feedback' xml:space='preserve'> <value>ysdy44@outlook.com</value> </data>
   <!--Separator 1-->
   <data name='VersionTitle' xml:space='preserve'> <value>Versie</value> </data>
   <data name='GithubTitle' xml:space='preserve'> <value>Github</value> </data>
   <data name='FeedbackTitle' xml:space='preserve'> <value>terugkoppeling</value> </data>
-  <data name='GithubLink' xml:space='preserve'> <value>https://github.com/ysdy44/Flip-Chess-UWP</value> </data>
+  <data name='GithubLink' xml:space='preserve'> <value>https://github.com/ysdy44/Flip-Chess-MAUI</value> </data>
   <data name='FeedbackLink' xml:space='preserve'> <value>mailto:ysdy44@outlook.com</value> </data>
   <!--Separator 2-->
   <data name='About' xml:space='preserve'> <value>Informatie..</value> </data>

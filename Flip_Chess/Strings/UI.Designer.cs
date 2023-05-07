@@ -124,7 +124,7 @@ namespace Flip_Chess.Strings {
         }
         
         /// <summary>
-        ///   查找类似 Flip-Chess-UWP 的本地化字符串。
+        ///   查找类似 Flip-Chess-MAUI 的本地化字符串。
         /// </summary>
         internal static string Github {
             get {
@@ -133,7 +133,7 @@ namespace Flip_Chess.Strings {
         }
         
         /// <summary>
-        ///   查找类似 https://github.com/ysdy44/Flip-Chess-UWP 的本地化字符串。
+        ///   查找类似 https://github.com/ysdy44/Flip-Chess-MAUI 的本地化字符串。
         /// </summary>
         internal static string GithubLink {
             get {
