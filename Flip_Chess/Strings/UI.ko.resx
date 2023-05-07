@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <xsd:schema id='root' xmlns='' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:msdata='urn:schemas-microsoft-com:xml-msdata'>
+    <xsd:import namespace='http://www.w3.org/XML/1998/namespace' />
+    <xsd:element name='root' msdata:IsDataSet='true'>
+      <xsd:complexType>
+        <xsd:choice maxOccurs='unbounded'>
+          <xsd:element name='metadata'>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name='value' type='xsd:string' minOccurs='0' />
+              </xsd:sequence>
+              <xsd:attribute name='name' use='required' type='xsd:string' />
+              <xsd:attribute name='type' type='xsd:string' />
+              <xsd:attribute name='mimetype' type='xsd:string' />
+              <xsd:attribute ref='xml:space' />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name='assembly'>
+            <xsd:complexType>
+              <xsd:attribute name='alias' type='xsd:string' />
+              <xsd:attribute name='name' type='xsd:string' />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name='data'>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name='value' type='xsd:string' minOccurs='0' msdata:Ordinal='1' />
+                <xsd:element name='comment' type='xsd:string' minOccurs='0' msdata:Ordinal='2' />
+              </xsd:sequence>
+              <xsd:attribute name='name' type='xsd:string' use='required' msdata:Ordinal='1' />
+              <xsd:attribute name='type' type='xsd:string' msdata:Ordinal='3' />
+              <xsd:attribute name='mimetype' type='xsd:string' msdata:Ordinal='4' />
+              <xsd:attribute ref='xml:space' />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name='resheader'>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name='value' type='xsd:string' minOccurs='0' msdata:Ordinal='1' />
+              </xsd:sequence>
+              <xsd:attribute name='name' type='xsd:string' use='required' />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name='resmimetype'>
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name='version'>
+    <value>2.0</value>
+  </resheader>
+  <resheader name='reader'>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name='writer'>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <!--Separator 0-->
+  <data name='Name' xml:space='preserve'> <value>Flip Chess</value> </data>
+  <data name='Version' xml:space='preserve'> <value>1.0.0</value> </data>
+  <data name='Github' xml:space='preserve'> <value>Flip-Chess-UWP</value> </data>
+  <data name='Feedback' xml:space='preserve'> <value>ysdy44@outlook.com</value> </data>
+  <!--Separator 1-->
+  <data name='VersionTitle' xml:space='preserve'> <value>버전입니다</value> </data>
+  <data name='GithubTitle' xml:space='preserve'> <value>Github</value> </data>
+  <data name='FeedbackTitle' xml:space='preserve'> <value>피드백</value> </data>
+  <data name='GithubLink' xml:space='preserve'> <value>https://github.com/ysdy44/Flip-Chess-UWP</value> </data>
+  <data name='FeedbackLink' xml:space='preserve'> <value>mailto:ysdy44@outlook.com</value> </data>
+  <!--Separator 2-->
+  <data name='About' xml:space='preserve'> <value>대해 ...</value> </data>
+  <data name='Tutorial' xml:space='preserve'> <value>자습서</value> </data>
+  <data name='Lose' xml:space='preserve'> <value>실패했습니다</value> </data>
+  <data name='Win' xml:space='preserve'> <value>승리</value> </data>
+  <data name='Pause' xml:space='preserve'> <value>일시 중지합니다</value> </data>
+  <data name='Click' xml:space='preserve'> <value>클릭합니다</value> </data>
+  <data name='ToRestart' xml:space='preserve'> <value>클릭하여 돌아갑니다</value> </data>
+  <data name='ToNext' xml:space='preserve'> <value>클릭하여 다음 레벨로 이동합니다</value> </data>
+  <data name='ToPlay' xml:space='preserve'> <value>다음 레벨로 점프하기 위해</value> </data>
+  <!--Separator 3-->
+  <data name='Computer' xml:space='preserve'> <value>컴퓨터</value> </data>
+  <data name='Players' xml:space='preserve'> <value>플레이어</value> </data>
+  <data name='PauseGame' xml:space='preserve'> <value>게임 일시 중지</value> </data>
+  <data name='NextStep' xml:space='preserve'> <value>다음 단계</value> </data>
+  <data name='Close' xml:space='preserve'> <value>닫기</value> </data>
+  <!--Separator 4-->
+  <data name='Guider001' xml:space='preserve'> <value>게임이 시작되면 빈 조각을 클릭하십시오.</value> </data>
+  <data name='Guider002' xml:space='preserve'> <value>빨간색 폰 또는 검은색 폰으로 바꿉니다.</value> </data>
+  <data name='Guider003' xml:space='preserve'> <value>각 폰에는 자체 레벨이 있습니다.</value> </data>
+  <data name='Guider004' xml:space='preserve'> <value>7 > 6 > 5 > 4 > 3 > 2 > 1</value> </data>
+  <data name='Guider005' xml:space='preserve'> <value>일반적으로 더 높은 레벨의 조각은 인접한 조각을 먹을 수 있습니다.</value> </data>
+  <data name='Guider006' xml:space='preserve'> <value>7 > 6 ,7 > 5</value> </data>
+  <data name='Guider007' xml:space='preserve'> <value>그러나 레벨 1 말만 레벨 7 폰을 먹을 수 있습니다.</value> </data>
+  <data name='Guider008' xml:space='preserve'> <value>1 > 7</value> </data>
+ </root>

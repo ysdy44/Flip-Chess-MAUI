@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <xsd:schema id='root' xmlns='' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:msdata='urn:schemas-microsoft-com:xml-msdata'>
+    <xsd:import namespace='http://www.w3.org/XML/1998/namespace' />
+    <xsd:element name='root' msdata:IsDataSet='true'>
+      <xsd:complexType>
+        <xsd:choice maxOccurs='unbounded'>
+          <xsd:element name='metadata'>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name='value' type='xsd:string' minOccurs='0' />
+              </xsd:sequence>
+              <xsd:attribute name='name' use='required' type='xsd:string' />
+              <xsd:attribute name='type' type='xsd:string' />
+              <xsd:attribute name='mimetype' type='xsd:string' />
+              <xsd:attribute ref='xml:space' />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name='assembly'>
+            <xsd:complexType>
+              <xsd:attribute name='alias' type='xsd:string' />
+              <xsd:attribute name='name' type='xsd:string' />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name='data'>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name='value' type='xsd:string' minOccurs='0' msdata:Ordinal='1' />
+                <xsd:element name='comment' type='xsd:string' minOccurs='0' msdata:Ordinal='2' />
+              </xsd:sequence>
+              <xsd:attribute name='name' type='xsd:string' use='required' msdata:Ordinal='1' />
+              <xsd:attribute name='type' type='xsd:string' msdata:Ordinal='3' />
+              <xsd:attribute name='mimetype' type='xsd:string' msdata:Ordinal='4' />
+              <xsd:attribute ref='xml:space' />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name='resheader'>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name='value' type='xsd:string' minOccurs='0' msdata:Ordinal='1' />
+              </xsd:sequence>
+              <xsd:attribute name='name' type='xsd:string' use='required' />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name='resmimetype'>
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name='version'>
+    <value>2.0</value>
+  </resheader>
+  <resheader name='reader'>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name='writer'>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <!--Separator 0-->
+  <data name='Name' xml:space='preserve'> <value>Flip Chess</value> </data>
+  <data name='Version' xml:space='preserve'> <value>1.0.0</value> </data>
+  <data name='Github' xml:space='preserve'> <value>Flip-Chess-UWP</value> </data>
+  <data name='Feedback' xml:space='preserve'> <value>ysdy44@outlook.com</value> </data>
+  <!--Separator 1-->
+  <data name='VersionTitle' xml:space='preserve'> <value>Version</value> </data>
+  <data name='GithubTitle' xml:space='preserve'> <value>Github</value> </data>
+  <data name='FeedbackTitle' xml:space='preserve'> <value>Feedback</value> </data>
+  <data name='GithubLink' xml:space='preserve'> <value>https://github.com/ysdy44/Flip-Chess-UWP</value> </data>
+  <data name='FeedbackLink' xml:space='preserve'> <value>mailto:ysdy44@outlook.com</value> </data>
+  <!--Separator 2-->
+  <data name='About' xml:space='preserve'> <value>Über...</value> </data>
+  <data name='Tutorial' xml:space='preserve'> <value>Tutorium</value> </data>
+  <data name='Lose' xml:space='preserve'> <value>Fehler</value> </data>
+  <data name='Win' xml:space='preserve'> <value>Sieg</value> </data>
+  <data name='Pause' xml:space='preserve'> <value>Auszeit</value> </data>
+  <data name='Click' xml:space='preserve'> <value>klicken</value> </data>
+  <data name='ToRestart' xml:space='preserve'> <value>Nimm alles noch einmal von vorne</value> </data>
+  <data name='ToNext' xml:space='preserve'> <value>um zum nächsten Level zu springen</value> </data>
+  <data name='ToPlay' xml:space='preserve'> <value>weiter geht's</value> </data>
+  <!--Separator 3-->
+  <data name='Computer' xml:space='preserve'> <value>Computer</value> </data>
+  <data name='Players' xml:space='preserve'> <value>Spieler</value> </data>
+  <data name='PauseGame' xml:space='preserve'> <value>Spiel pausieren</value> </data>
+  <data name='NextStep' xml:space='preserve'> <value>Nächster Schritt</value> </data>
+  <data name='Close' xml:space='preserve'> <value>Schließen</value> </data>
+  <!--Separator 4-->
+  <data name='Guider001' xml:space='preserve'> <value>Wenn das Spiel beginnt, klicken Sie auf die leeren Teile</value> </data>
+  <data name='Guider002' xml:space='preserve'> <value>Verwandeln Sie es in einen roten Bauern oder einen schwarzen Bauern</value> </data>
+  <data name='Guider003' xml:space='preserve'> <value>Jeder Bauer hat sein eigenes Level</value> </data>
+  <data name='Guider004' xml:space='preserve'> <value>7 > 6 > 5 > 4 > 3 > 2 > 1</value> </data>
+  <data name='Guider005' xml:space='preserve'> <value>Im Allgemeinen können höherstufige Figuren benachbarte Stücke fressen</value> </data>
+  <data name='Guider006' xml:space='preserve'> <value>7 > 6 ,7 > 5</value> </data>
+  <data name='Guider007' xml:space='preserve'> <value>Allerdings kann nur eine Figur der Stufe 1 einen Bauern der Stufe 7 fressen</value> </data>
+  <data name='Guider008' xml:space='preserve'> <value>1 > 7</value> </data>
+ </root>

@@ -97,4 +97,20 @@
 	  <ProjectReference Include="..\Flip_Chess.Elements\Flip_Chess.Elements.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Strings\UI.Designer.cs">
+	    <DependentUpon>UI.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Strings\UI.resx">
+	    <SubType>Designer</SubType>
+	    <LastGenOutput>UI.Designer.cs</LastGenOutput>
+	    <Generator>ResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	</ItemGroup>
+
 </Project>
