@@ -3,6 +3,36 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Flip_Chess.TestApp.MainPage"
+    xmlns:models="clr-namespace:Flip_Chess.TestApp.Models"
+    BackgroundColor="Black"
     >
 
+    <FlexLayout
+        x:Name="ItemsControl" 
+        WidthRequest="320"
+        HeightRequest="640"
+        AlignItems="Start"
+        AlignContent="Start"
+        JustifyContent="Start"
+        Direction="Row"
+        Position="Absolute"
+        Wrap="Wrap"
+        >
+        <BindableLayout.ItemTemplate>
+            <DataTemplate x:DataType="{x:Type models:Chess}">
+                <Border WidthRequest="80" HeightRequest="80" >
+                    <Border StrokeThickness="4" Stroke="Black" Background="White" IsVisible="{Binding Visibility, Mode=OneWay}">
+                        <Label 
+                            HorizontalOptions="Center" 
+                            VerticalOptions="Center" 
+                            FontSize="44"
+                            FontAttributes="Bold"
+                            Text="{Binding Text, Mode=OneWay}"
+                            TextColor="{Binding Color, Mode=OneWay}"
+                            />
+                    </Border>
+                </Border>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </FlexLayout>
 </ContentPage>
