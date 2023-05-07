@@ -48,16 +48,52 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Assets\Images\background_x2.jpg" />
+	  <None Remove="Assets\Images\black_cannons.png" />
+	  <None Remove="Assets\Images\black_cannons_x2.png" />
+	  <None Remove="Assets\Images\black_elephant.png" />
+	  <None Remove="Assets\Images\black_elephant_x2.png" />
+	  <None Remove="Assets\Images\black_king.png" />
+	  <None Remove="Assets\Images\black_king_x2.png" />
+	  <None Remove="Assets\Images\black_knight.png" />
+	  <None Remove="Assets\Images\black_knight_x2.png" />
+	  <None Remove="Assets\Images\black_mandarins.png" />
+	  <None Remove="Assets\Images\black_mandarins_x2.png" />
+	  <None Remove="Assets\Images\black_rook.png" />
+	  <None Remove="Assets\Images\black_rook_x2.png" />
+	  <None Remove="Assets\Images\black_soldier.png" />
+	  <None Remove="Assets\Images\black_soldier_x2.png" />
+	  <None Remove="Assets\Images\item.png" />
+	  <None Remove="Assets\Images\item_black.png" />
+	  <None Remove="Assets\Images\item_black_x2.png" />
+	  <None Remove="Assets\Images\item_red.png" />
+	  <None Remove="Assets\Images\item_red_x2.png" />
+	  <None Remove="Assets\Images\item_x2.png" />
+	  <None Remove="Assets\Images\none.png" />
+	  <None Remove="Assets\Images\none_x2.png" />
+	  <None Remove="Assets\Images\red_cannons.png" />
+	  <None Remove="Assets\Images\red_cannons_x2.png" />
+	  <None Remove="Assets\Images\red_elephant.png" />
+	  <None Remove="Assets\Images\red_elephant_x2.png" />
+	  <None Remove="Assets\Images\red_king.png" />
+	  <None Remove="Assets\Images\red_king_x2.png" />
+	  <None Remove="Assets\Images\red_knight.png" />
+	  <None Remove="Assets\Images\red_knight_x2.png" />
+	  <None Remove="Assets\Images\red_mandarins.png" />
+	  <None Remove="Assets\Images\red_mandarins_x2.png" />
+	  <None Remove="Assets\Images\red_rook.png" />
+	  <None Remove="Assets\Images\red_rook_x2.png" />
+	  <None Remove="Assets\Images\red_soldier.png" />
+	  <None Remove="Assets\Images\red_soldier_x2.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Flip_Chess.Chesses\Flip_Chess.Chesses.csproj" />
 	  <ProjectReference Include="..\Flip_Chess.Elements\Flip_Chess.Elements.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Assets\Images\" />
 	</ItemGroup>
 
 </Project>
