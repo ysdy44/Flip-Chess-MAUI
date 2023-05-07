@@ -48,6 +48,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Assets\Fonts\Segoe UI Symbol Regular.ttf" />
 	  <None Remove="Assets\Images\background_x2.jpg" />
 	  <None Remove="Assets\Images\black_cannons.png" />
 	  <None Remove="Assets\Images\black_cannons_x2.png" />
