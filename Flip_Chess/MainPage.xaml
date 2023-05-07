@@ -4,6 +4,1432 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Flip_Chess.MainPage"
+    xmlns:models="clr-namespace:Flip_Chess.Models"
+    xmlns:elements="clr-namespace:Flip_Chess.Elements;assembly=Flip_Chess.Elements"
+    xmlns:chesses="clr-namespace:Flip_Chess.Chesses;assembly=Flip_Chess.Chesses"
+    xmlns:strings="clr-namespace:Flip_Chess.Strings"
+    xmlns:local="clr-namespace:Flip_Chess"
+    Background="#412D1C"
     >
 
+    <VisualElement.Resources>
+        <ResourceDictionary>
+
+            <!--Color-->
+            <Color x:Key="AppColor100">#F1C892</Color>
+            <Color x:Key="AppColor200">#FEBE80</Color>
+            <Color x:Key="AppColor300">#E09F5D</Color>
+            <Color x:Key="AppColor400">#A9865E</Color>
+            <Color x:Key="AppColor500">#976C41</Color>
+            <Color x:Key="AppColor600">#765338</Color>
+            <Color x:Key="AppColor700">#63452B</Color>
+            <Color x:Key="AppColor800">#593C23</Color>
+            <Color x:Key="AppColor900">#412D1C</Color>
+
+            <!--Brush-->
+            <SolidColorBrush x:Key="AppBrush100" Color="{StaticResource AppColor100}"/>
+            <SolidColorBrush x:Key="AppBrush200" Color="{StaticResource AppColor200}"/>
+            <SolidColorBrush x:Key="AppBrush300" Color="{StaticResource AppColor300}"/>
+            <SolidColorBrush x:Key="AppBrush400" Color="{StaticResource AppColor400}"/>
+            <SolidColorBrush x:Key="AppBrush500" Color="{StaticResource AppColor500}"/>
+            <SolidColorBrush x:Key="AppBrush600" Color="{StaticResource AppColor600}"/>
+            <SolidColorBrush x:Key="AppBrush700" Color="{StaticResource AppColor700}"/>
+            <SolidColorBrush x:Key="AppBrush800" Color="{StaticResource AppColor800}"/>
+            <SolidColorBrush x:Key="AppBrush900" Color="{StaticResource AppColor900}"/>
+
+
+            <!--Brush-->
+            <SolidColorBrush x:Key="AppRed" Color="DarkRed"/>
+            <SolidColorBrush x:Key="AppBlack" Color="Black"/>
+
+
+            <!--Style-->
+            <Style TargetType="Line">
+                <Setter Property="StrokeThickness" Value="2"/>
+                <Setter Property="Stroke" Value="{StaticResource AppColor800}"/>
+            </Style>
+
+        </ResourceDictionary>
+    </VisualElement.Resources>
+
+    <Grid>
+        <Image x:Name="Image" IsEnabled="False" Aspect="AspectFill" Source="background_x2.jpg" />
+
+
+        <!--Width: 80+28+400+28+80-->
+        <!--Height: 28+800+28-->
+        <Grid x:Name="Viewbox" Margin="0,28" WidthRequest="616" HeightRequest="856" HorizontalOptions="Center" VerticalOptions="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Cemetery-->
+            <AbsoluteLayout 
+                x:Name="BlackCemeteryCanvas"
+                Margin="10,28" 
+                WidthRequest="60" 
+                HeightRequest="300" 
+                VerticalOptions="End"
+                BackgroundColor="#30000000"
+                >
+                <Image
+                    AbsoluteLayout.LayoutBounds="0,0,60,60"
+                    Opacity="{Binding BlackCemetery[0].Opacity, Mode=OneWay}"
+                    >
+                    <Image.Source>
+                        <FileImageSource File="{Binding BlackCemetery[0].ImageSource, Mode=OneWay}"/>
+                    </Image.Source>
+                </Image>
+                <Image
+                    AbsoluteLayout.LayoutBounds="0,60,60,60"
+                    Opacity="{Binding BlackCemetery[1].Opacity, Mode=OneWay}"
+                    >
+                    <Image.Source>
+                        <FileImageSource File="{Binding BlackCemetery[1].ImageSource, Mode=OneWay}"/>
+                    </Image.Source>
+                </Image>
+                <Image
+                    AbsoluteLayout.LayoutBounds="0,120,60,60"
+                    Opacity="{Binding BlackCemetery[2].Opacity, Mode=OneWay}"
+                    >
+                    <Image.Source>
+                        <FileImageSource File="{Binding BlackCemetery[2].ImageSource, Mode=OneWay}"/>
+                    </Image.Source>
+                </Image>
+                <Image
+                    AbsoluteLayout.LayoutBounds="0,180,60,60"
+                    Opacity="{Binding BlackCemetery[3].Opacity, Mode=OneWay}"
+                    >
+                    <Image.Source>
+                        <FileImageSource File="{Binding BlackCemetery[3].ImageSource, Mode=OneWay}"/>
+                    </Image.Source>
+                </Image>
+                <Image
+                    AbsoluteLayout.LayoutBounds="0,240,60,60"
+                    Opacity="{Binding BlackCemetery[4].Opacity, Mode=OneWay}"
+                    >
+                    <Image.Source>
+                        <FileImageSource File="{Binding BlackCemetery[4].ImageSource, Mode=OneWay}"/>
+                    </Image.Source>
+                </Image>
+
+                <Border 
+                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    StrokeThickness="2"
+                    Stroke="White" 
+                    BackgroundColor="Black" 
+                    IsVisible="{Binding BlackCemetery[0].Visibility, Mode=OneWay}"
+                    >
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Label 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="White" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{Binding BlackCemetery[0].Count, Mode=OneWay}"
+                        >
+                        <!--Text-->
+                    </Label>
+                </Border>
+                <Border 
+                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    StrokeThickness="2"
+                    Stroke="White" 
+                    BackgroundColor="Black" 
+                    IsVisible="{Binding BlackCemetery[1].Visibility, Mode=OneWay}"
+                    >
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Label 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="White" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{Binding BlackCemetery[1].Count, Mode=OneWay}"
+                        >
+                        <!--Text-->
+                    </Label>
+                </Border>
+                <Border 
+                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    StrokeThickness="2"
+                    Stroke="White" 
+                    BackgroundColor="Black" 
+                    IsVisible="{Binding BlackCemetery[2].Visibility, Mode=OneWay}"
+                    >
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Label 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="White" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{Binding BlackCemetery[2].Count, Mode=OneWay}"
+                        >
+                        <!--Text-->
+                    </Label>
+                </Border>
+                <Border 
+                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    StrokeThickness="2"
+                    Stroke="White" 
+                    BackgroundColor="Black" 
+                    IsVisible="{Binding BlackCemetery[3].Visibility, Mode=OneWay}"
+                    >
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Label 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="White" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{Binding BlackCemetery[3].Count, Mode=OneWay}"
+                        >
+                        <!--Text-->
+                    </Label>
+                </Border>
+                <Border 
+                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    StrokeThickness="2"
+                    Stroke="White" 
+                    BackgroundColor="Black" 
+                    IsVisible="{Binding BlackCemetery[4].Visibility, Mode=OneWay}"
+                    >
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Label 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="White" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{Binding BlackCemetery[4].Count, Mode=OneWay}"
+                        >
+                        <!--Text-->
+                    </Label>
+                </Border>
+            </AbsoluteLayout>
+
+            <!--Cemetery-->
+            <AbsoluteLayout 
+                x:Name="RedCemeteryCanvas"
+                Grid.Column="2"
+                Margin="10,28" 
+                WidthRequest="60" 
+                HeightRequest="300" 
+                VerticalOptions="Start"
+                BackgroundColor="#30000000"
+                >
+                <Image
+                    AbsoluteLayout.LayoutBounds="0,0,60,60"
+                    Opacity="{Binding RedCemetery[0].Opacity, Mode=OneWay}"
+                    >
+                    <Image.Source>
+                        <FileImageSource File="{Binding RedCemetery[0].ImageSource, Mode=OneWay}"/>
+                    </Image.Source>
+                </Image>
+                <Image
+                    AbsoluteLayout.LayoutBounds="0,60,60,60"
+                    Opacity="{Binding RedCemetery[1].Opacity, Mode=OneWay}"
+                    >
+                    <Image.Source>
+                        <FileImageSource File="{Binding RedCemetery[1].ImageSource, Mode=OneWay}"/>
+                    </Image.Source>
+                </Image>
+                <Image
+                    AbsoluteLayout.LayoutBounds="0,120,60,60"
+                    Opacity="{Binding RedCemetery[2].Opacity, Mode=OneWay}"
+                    >
+                    <Image.Source>
+                        <FileImageSource File="{Binding RedCemetery[2].ImageSource, Mode=OneWay}"/>
+                    </Image.Source>
+                </Image>
+                <Image
+                    AbsoluteLayout.LayoutBounds="0,180,60,60"
+                    Opacity="{Binding RedCemetery[3].Opacity, Mode=OneWay}"
+                    >
+                    <Image.Source>
+                        <FileImageSource File="{Binding RedCemetery[3].ImageSource, Mode=OneWay}"/>
+                    </Image.Source>
+                </Image>
+                <Image
+                    AbsoluteLayout.LayoutBounds="0,240,60,60"
+                    Opacity="{Binding RedCemetery[4].Opacity, Mode=OneWay}"
+                    >
+                    <Image.Source>
+                        <FileImageSource File="{Binding RedCemetery[4].ImageSource, Mode=OneWay}"/>
+                    </Image.Source>
+                </Image>
+                
+                <Border 
+                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    StrokeThickness="2"
+                    Stroke="White" 
+                    BackgroundColor="DarkRed" 
+                    IsVisible="{Binding RedCemetery[0].Visibility, Mode=OneWay}"
+                    >
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Label 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="White" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{Binding RedCemetery[0].Count, Mode=OneWay}"
+                        >
+                        <!--Text-->
+                    </Label>
+                </Border>
+                <Border 
+                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    StrokeThickness="2"
+                    Stroke="White" 
+                    BackgroundColor="DarkRed" 
+                    IsVisible="{Binding RedCemetery[1].Visibility, Mode=OneWay}"
+                    >
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Label 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="White" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{Binding RedCemetery[1].Count, Mode=OneWay}"
+                        >
+                        <!--Text-->
+                    </Label>
+                </Border>
+                <Border 
+                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    StrokeThickness="2"
+                    Stroke="White" 
+                    BackgroundColor="DarkRed" 
+                    IsVisible="{Binding RedCemetery[2].Visibility, Mode=OneWay}"
+                    >
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Label 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="White" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{Binding RedCemetery[2].Count, Mode=OneWay}"
+                        >
+                        <!--Text-->
+                    </Label>
+                </Border>
+                <Border 
+                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    StrokeThickness="2"
+                    Stroke="White" 
+                    BackgroundColor="DarkRed" 
+                    IsVisible="{Binding RedCemetery[3].Visibility, Mode=OneWay}"
+                    >
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Label 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="White" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{Binding RedCemetery[3].Count, Mode=OneWay}"
+                        >
+                        <!--Text-->
+                    </Label>
+                </Border>
+                <Border 
+                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    StrokeThickness="2"
+                    Stroke="White" 
+                    BackgroundColor="DarkRed" 
+                    IsVisible="{Binding RedCemetery[4].Visibility, Mode=OneWay}"
+                    >
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Label 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="White" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{Binding RedCemetery[4].Count, Mode=OneWay}"
+                        >
+                        <!--Text-->
+                    </Label>
+                </Border>
+            </AbsoluteLayout>
+
+
+            <!--Player-->
+            <elements:ToggleButton 
+                x:Name="BlackButton"
+                Margin="0,28"
+                Padding="2"
+                CornerRadius="4" 
+                WidthRequest="54" 
+                HeightRequest="52" 
+                Text="{Binding Source={x:Reference BlackListBox}, Path=SelectedItem.Icon, Mode=OneWay}"
+                FontSize="24"
+                FontAttributes="Bold" 
+                FontFamily="Segoe UI Symbol" 
+                TextColor="Black"
+                BackgroundColor="{StaticResource AppColor100}"
+                HorizontalOptions="Center" 
+                VerticalOptions="Start" 
+                />
+
+            <!--Player-->
+            <elements:ToggleButton 
+                x:Name="RedButton"
+                Grid.Column="2" 
+                Margin="0,28"
+                Padding="2"
+                CornerRadius="4" 
+                WidthRequest="54" 
+                HeightRequest="52" 
+                Text="{Binding Source={x:Reference RedListBox}, Path=SelectedItem.Icon, Mode=OneWay}"
+                FontSize="24"
+                FontAttributes="Bold" 
+                FontFamily="Segoe UI Symbol" 
+                TextColor="DarkRed"
+                BackgroundColor="{StaticResource AppColor100}"
+                HorizontalOptions="Center" 
+                VerticalOptions="End" 
+                />
+
+
+            <!--Value-->
+            <!--Margin = 60 + 28-->
+            <Border 
+                Grid.Column="2"
+                Margin="0,88"
+                WidthRequest="10"
+                HeightRequest="208"
+                StrokeThickness="1"
+                Stroke="{StaticResource AppBrush300}" 
+                BackgroundColor="{StaticResource AppColor900}"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                >
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="4"/>
+                </Border.StrokeShape>
+                <Rectangle x:Name="RedProgressBar" HeightRequest="208" Fill="Red" VerticalOptions="End"/>
+            </Border>
+
+            <!--Value-->
+            <!--Margin = 60 + 28-->
+            <Border 
+                Margin="0,88"
+                WidthRequest="10"
+                HeightRequest="208"
+                StrokeThickness="1"
+                Stroke="{StaticResource AppBrush300}" 
+                BackgroundColor="{StaticResource AppColor900}"
+                HorizontalOptions="Center"
+                VerticalOptions="Start"
+                >
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="4"/>
+                </Border.StrokeShape>
+                <Rectangle x:Name="BlackProgressBar" HeightRequest="208" Fill="DodgerBlue" VerticalOptions="Start"/>
+            </Border>
+
+
+            <!--Chess-->
+            <AbsoluteLayout
+                x:Name="Canvas"
+                Grid.Column="1"
+                Margin="28"
+                WidthRequest="400"
+                HeightRequest="800"
+                >
+
+                <!--Background-->
+                <Rectangle
+                    Grid.Column="1"
+                    IsEnabled="False"
+                    AbsoluteLayout.LayoutBounds="-28,-28,456,856" 
+                    RadiusX="8"
+                    RadiusY="8"
+                    StrokeThickness="4" 
+                    Stroke="{StaticResource AppBrush900}" 
+                    Fill="{StaticResource AppBrush100}" 
+                    />
+
+                <!--Background-->
+                <Rectangle 
+                    Grid.Column="1"
+                    IsEnabled="False"
+                    AbsoluteLayout.LayoutBounds="-10,-10,420,820" 
+                    StrokeThickness="6" 
+                    Stroke="{StaticResource AppBrush400}" 
+                    />
+
+                <!--Lines-->
+                <local:MainLinesCanvas x:Name="Lines" IsEnabled="False"/>
+
+                <!--Highlight-->
+                <AbsoluteLayout
+                    x:Name="CenterHighlight"
+                    IsVisible="False"
+                    IsEnabled="False"
+                    AbsoluteLayout.LayoutBounds="0,0,100,100" 
+                    WidthRequest="100"
+                    HeightRequest="100"
+                    Background="#44FEF893"
+                    >
+                    <Ellipse AbsoluteLayout.LayoutBounds="4,0,92,99" StrokeThickness="3" Stroke="Gold" Fill="Transparent"/>
+                    <Ellipse AbsoluteLayout.LayoutBounds="4,0,92,99" StrokeThickness="2" Stroke="#FFF8A3" Fill="Transparent"/>
+                </AbsoluteLayout>
+                <elements:Highlight x:Name="LeftHighlight"/>
+                <elements:Highlight x:Name="TopHighlight"/>
+                <elements:Highlight x:Name="RightHighlight"/>
+                <elements:Highlight x:Name="BottomHighlight"/>
+
+                <!--Body-->
+                <elements:AnimationClipContainer
+                    x:Name="ClipContainer"
+                    AbsoluteLayout.LayoutBounds="0,0,400,800" 
+                    CommandParameter="{strings:OptionType Type=UIClipCompleted}"
+                    Command="{Binding Command, Mode=OneTime}"
+                    >
+
+                    <!--#region 0 Rows-->
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="0,0,100,100"
+                        IsVisible="{Binding Chesses[0].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[0], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[0].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="100,0,100,100"
+                        IsVisible="{Binding Chesses[1].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[1], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[1].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="200,0,100,100"
+                        IsVisible="{Binding Chesses[2].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[2], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[2].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="300,0,100,100"
+                        IsVisible="{Binding Chesses[3].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[3], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[3].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+
+                    <!--#endregion-->
+
+                    <!--#region 1 Rows-->
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="0,100,100,100"
+                        IsVisible="{Binding Chesses[4].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[4], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[4].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="100,100,100,100"
+                        IsVisible="{Binding Chesses[5].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[5], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[5].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="200,100,100,100"
+                        IsVisible="{Binding Chesses[6].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[6], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[6].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="300,100,100,100"
+                        IsVisible="{Binding Chesses[7].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[7], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[7].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+
+                    <!--#endregion-->
+
+                    <!--#region 2 Rows-->
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="0,200,100,100"
+                        IsVisible="{Binding Chesses[8].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[8], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[8].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="100,200,100,100"
+                        IsVisible="{Binding Chesses[9].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[9], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[9].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="200,200,100,100"
+                        IsVisible="{Binding Chesses[10].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[10], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[10].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="300,200,100,100"
+                        IsVisible="{Binding Chesses[11].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[11], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[11].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+
+                    <!--#endregion-->
+
+                    <!--#region 3 Rows-->
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="0,300,100,100"
+                        IsVisible="{Binding Chesses[12].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[12], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[12].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="100,300,100,100"
+                        IsVisible="{Binding Chesses[13].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[13], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[13].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="200,300,100,100"
+                        IsVisible="{Binding Chesses[14].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[14], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[14].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="300,300,100,100"
+                        IsVisible="{Binding Chesses[15].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[15], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[15].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+
+                    <!--#endregion-->
+
+                    <!--#region 4 Rows-->
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="0,400,100,100"
+                        IsVisible="{Binding Chesses[16].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[16], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[16].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="100,400,100,100"
+                        IsVisible="{Binding Chesses[17].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[17], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[17].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="200,400,100,100"
+                        IsVisible="{Binding Chesses[18].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[18], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[18].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="300,400,100,100"
+                        IsVisible="{Binding Chesses[19].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[19], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[19].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+
+                    <!--#endregion-->
+
+                    <!--#region 5 Rows-->
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="0,500,100,100"
+                        IsVisible="{Binding Chesses[20].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[20], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[20].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="100,500,100,100"
+                        IsVisible="{Binding Chesses[21].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[21], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[21].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="200,500,100,100"
+                        IsVisible="{Binding Chesses[22].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[22], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[22].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="300,500,100,100"
+                        IsVisible="{Binding Chesses[23].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[23], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[23].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+
+                    <!--#endregion-->
+
+                    <!--#region 6 Rows-->
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="0,600,100,100"
+                        IsVisible="{Binding Chesses[24].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[24], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[24].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="100,600,100,100"
+                        IsVisible="{Binding Chesses[25].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[25], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[25].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="200,600,100,100"
+                        IsVisible="{Binding Chesses[26].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[26], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[26].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="300,600,100,100"
+                        IsVisible="{Binding Chesses[27].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[27], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[27].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+
+                    <!--#endregion-->
+
+                    <!--#region 7 Rows-->
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="0,700,100,100"
+                        IsVisible="{Binding Chesses[28].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[28], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[28].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="100,700,100,100"
+                        IsVisible="{Binding Chesses[29].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[29], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[29].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="200,700,100,100"
+                        IsVisible="{Binding Chesses[30].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[30], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[30].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
+                        AbsoluteLayout.LayoutBounds="300,700,100,100"
+                        IsVisible="{Binding Chesses[31].Visibility, Mode=OneWay}"
+                        CommandParameter="{Binding Chesses[31], Mode=OneTime}"
+                        Command="{Binding Command, Mode=OneTime}" >
+                        <ImageButton.Source>
+                            <FileImageSource File="{Binding Chesses[31].ImageSource, Mode=OneWay}"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+
+                    <!--#endregion-->
+
+                </elements:AnimationClipContainer>
+
+                <!--Animation-->
+                <elements:AnimationZoomMoveImage
+                    x:Name="CemeteryItem"
+                    IsEnabled="False"
+                    CommandParameter="{strings:OptionType Type=UICemeteryCompleted}"
+                    Command="{Binding Command, Mode=OneTime}"
+                    AbsoluteLayout.LayoutBounds="0,0,100,100" 
+                    />
+
+                <!--Animation-->
+                <elements:AnimationMoveImage
+                    x:Name="CaptureItem"
+                    IsEnabled="False"
+                    CommandParameter="{strings:OptionType Type=UICaptureCompleted}"
+                    Command="{Binding Command, Mode=OneTime}"
+                    AbsoluteLayout.LayoutBounds="0,0,100,100" 
+                    />
+
+                <!--Animation-->
+                <elements:AnimationZoomImage
+                    x:Name="FlipItem"
+                    IsEnabled="False"
+                    CommandParameter="{strings:OptionType Type=UIFlipCompleted}"
+                    Command="{Binding Command, Mode=OneTime}"
+                    PlaceholderSource="item_x2.png"
+                    AbsoluteLayout.LayoutBounds="0,0,100,100" 
+                    />
+
+            </AbsoluteLayout>
+
+        </Grid>
+
+        <!--Button-->
+        <elements:ToggleButton
+            x:Name="RunButton"
+            IsChecked="False"
+            Margin="12"
+            Padding="28,2"
+            CornerRadius="22"
+            MinimumWidthRequest="60"
+            HeightRequest="44"
+            BorderWidth="1"
+            BorderColor="{StaticResource AppColor300}"
+            Background="{StaticResource AppColor900}"
+            TextColor="{StaticResource AppColor100}"
+            FontAttributes="Bold"
+            FontSize="26"
+            HorizontalOptions="Start"
+            VerticalOptions="End"
+           >
+            <!--Text-->
+        </elements:ToggleButton>
+
+        <!--Button-->
+        <!--<Button 
+            Margin="12,18"
+            Padding="2"
+            CornerRadius="4" 
+            WidthRequest="46" 
+            HeightRequest="44" 
+            Text="&#xE1D9;"
+            FontSize="24"
+            FontAttributes="Bold" 
+            FontFamily="Segoe UI Symbol" 
+            TextColor="{StaticResource AppColor900}"
+            BackgroundColor="{StaticResource AppColor100}"
+            HorizontalOptions="Start" 
+            VerticalOptions="Start" 
+            CommandParameter="{strings:OptionType Type=FullScreen}"
+            Command="{Binding Command, Mode=OneTime}"
+            />-->
+        <!--<Button 
+            Margin="12,18"
+            Padding="2"
+            CornerRadius="4" 
+            WidthRequest="46" 
+            HeightRequest="44" 
+            Text="&#xE1D8;"
+            FontSize="24"
+            FontAttributes="Bold" 
+            FontFamily="Segoe UI Symbol" 
+            TextColor="{StaticResource AppColor900}"
+            BackgroundColor="{StaticResource AppColor100}"
+            HorizontalOptions="Start" 
+            VerticalOptions="Start" 
+            CommandParameter="{strings:OptionType Type=UnFullScreen}"
+            Command="{Binding Command, Mode=OneTime}"
+            />-->
+
+        <!--Button-->
+        <AbsoluteLayout WidthRequest="162" HeightRequest="115" HorizontalOptions="End" VerticalOptions="End">
+            <elements:RevolvingRestaurant
+                AbsoluteLayout.LayoutBounds="0,0,250,250"
+                IsEnabled="{Binding State, Mode=OneWay, Converter={strings:Converter Type=NoneToBooleanConverter}}"
+                >
+
+                <VisualElement.Resources>
+                    <!--Style-->
+                    <Style TargetType="Label">
+                        <Setter Property="HorizontalOptions" Value="Center"/>
+                        <Setter Property="VerticalOptions" Value="Start"/>
+                        <Setter Property="FontSize" Value="19"/>
+                        <Setter Property="TextColor" Value="{StaticResource AppColor500}"/>
+                    </Style>
+                </VisualElement.Resources>
+
+                <Ellipse WidthRequest="250" HeightRequest="250" StrokeThickness="1" Stroke="{StaticResource AppBrush300}" Fill="{StaticResource AppBrush900}"/>
+                <Ellipse WidthRequest="195" HeightRequest="195" StrokeThickness="1" Stroke="{StaticResource AppBrush900}" Fill="{StaticResource AppBrush200}"/>
+
+                <!--#region Rotate-->
+
+                <Grid Rotation="0">
+                    <Label>中</Label>
+                </Grid>
+                <Grid Rotation="12.5">
+                    <Label>国</Label>
+                </Grid>
+                <Grid Rotation="25">
+                    <Label>象</Label>
+                </Grid>
+                <Grid Rotation="37.5">
+                    <Label>棋</Label>
+                </Grid>
+                <Grid Rotation="50">
+                    <Label>翻</Label>
+                </Grid>
+                <Grid Rotation="62.5">
+                    <Label>翻</Label>
+                </Grid>
+                <Grid Rotation="75">
+                    <Label>棋</Label>
+                </Grid>
+
+                <!--#endregion-->
+
+                <!--#region Rotate-->
+
+                <Grid Rotation="90">
+                    <Label Text="中"/>
+                </Grid>
+                <Grid Rotation="102.5">
+                    <Label>国</Label>
+                </Grid>
+                <Grid Rotation="115">
+                    <Label>象</Label>
+                </Grid>
+                <Grid Rotation="127.5">
+                    <Label>棋</Label>
+                </Grid>
+                <Grid Rotation="140">
+                    <Label>翻</Label>
+                </Grid>
+                <Grid Rotation="152.5">
+                    <Label>翻</Label>
+                </Grid>
+                <Grid Rotation="165">
+                    <Label>棋</Label>
+                </Grid>
+
+                <!--#endregion-->
+
+                <!--#region Rotate-->
+
+                <Grid Rotation="180">
+                    <Label Text="中"/>
+                </Grid>
+                <Grid Rotation="192.5">
+                    <Label>国</Label>
+                </Grid>
+                <Grid Rotation="205">
+                    <Label>象</Label>
+                </Grid>
+                <Grid Rotation="217.5">
+                    <Label>棋</Label>
+                </Grid>
+                <Grid Rotation="230">
+                    <Label>翻</Label>
+                </Grid>
+                <Grid Rotation="242.5">
+                    <Label>翻</Label>
+                </Grid>
+                <Grid Rotation="255">
+                    <Label>棋</Label>
+                </Grid>
+
+                <!--#endregion-->
+
+                <!--#region Rotate-->
+
+                <Grid Rotation="270">
+                    <Label Text="中"/>
+                </Grid>
+                <Grid Rotation="282.5">
+                    <Label>国</Label>
+                </Grid>
+                <Grid Rotation="295">
+                    <Label>象</Label>
+                </Grid>
+                <Grid Rotation="307.5">
+                    <Label>棋</Label>
+                </Grid>
+                <Grid Rotation="320">
+                    <Label>翻</Label>
+                </Grid>
+                <Grid Rotation="332.5">
+                    <Label>翻</Label>
+                </Grid>
+                <Grid Rotation="345">
+                    <Label>棋</Label>
+                </Grid>
+
+                <!--#endregion-->
+
+            </elements:RevolvingRestaurant>
+            <ContentView AbsoluteLayout.LayoutBounds="50,45,112,70">
+                <View.GestureRecognizers>
+                    <TapGestureRecognizer                              
+                        CommandParameter="{strings:OptionType Type=Pause}" 
+                        Command="{Binding Command, Mode=OneTime}"
+                        />
+                </View.GestureRecognizers>
+                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label 
+                        Margin="0,0,0,-10" 
+                        Text="&#xE103;"
+                        FontSize="40"
+                        FontAttributes="Bold" 
+                        FontFamily="Segoe UI Symbol" 
+                        HorizontalOptions="Center" 
+                        TextColor="{StaticResource AppColor900}"
+                        />
+                    <Label 
+                        FontSize="18"
+                        FontAttributes="Bold" 
+                        HorizontalOptions="Center" 
+                        TextColor="{StaticResource AppColor900}"
+                        Text="{strings:UI Type=PauseGame}" 
+                        >
+                        <!--PauseGame-->
+                    </Label>
+                </VerticalStackLayout>
+            </ContentView>
+        </AbsoluteLayout>
+
+        <!--Button-->
+        <elements:ToggleButton 
+            x:Name="ModeButton"
+            Margin="12,18"
+            Padding="2"
+            CornerRadius="4" 
+            WidthRequest="46" 
+            HeightRequest="44" 
+            Text="&#xE138;"
+            FontSize="24"
+            FontAttributes="Bold" 
+            FontFamily="Segoe UI Symbol" 
+            TextColor="{StaticResource AppColor900}"
+            BackgroundColor="{StaticResource AppColor100}"
+            HorizontalOptions="End" 
+            VerticalOptions="Start" 
+            />
+
+        <!--Flyout-->
+        <elements:AnimationFadeContainer
+            Margin="14,14,14,58"
+            HorizontalOptions="Start"
+            VerticalOptions="End"
+            StrokeThickness="1"
+            Stroke="{StaticResource AppBrush300}"
+            BackgroundColor="{StaticResource AppColor900}"
+            IsEnabled="{Binding Source={x:Reference RunButton}, Path=IsChecked, Mode=OneWay}"
+            >
+            <elements:CommandListBox
+                Margin="10,12" 
+                WidthRequest="210" 
+                MinimumHeightRequest="22" 
+                SelectionMode="None" 
+                ItemsSource="{Binding Historian}"
+               >
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type chesses:History}">
+                        <ViewCell Height="40">
+                            <Label 
+                                Margin="12,0"
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                LineBreakMode="NoWrap"
+                                VerticalOptions="Center"
+                                Text="{Binding}"
+                                TextColor="{StaticResource AppColor100}"
+                                />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </elements:CommandListBox>
+        </elements:AnimationFadeContainer>
+
+        <!--Flyout-->
+        <elements:AnimationFadeContainer
+            Margin="2,66,2,2"
+            HorizontalOptions="End"
+            VerticalOptions="Start"
+            StrokeThickness="1"
+            Stroke="{StaticResource AppBrush300}"
+            BackgroundColor="{StaticResource AppColor900}"
+            IsEnabled="{Binding Source={x:Reference ModeButton}, Path=IsChecked, Mode=OneWay}"
+            >
+            <elements:CommandListBox
+                x:Name="ListBox"
+                Margin="4,6" 
+                WidthRequest="85"
+                HeightRequest="180"
+                SelectionMode="Single" 
+                CommandParameter="{strings:OptionType Type=UIModeChanged}" 
+                Command="{Binding Command, Mode=OneTime}"
+               >
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type local:ModeVisible}">
+                        <local:ModeVisible/>
+                        <local:ModeVisible IsVisible000="True" IsVisible005="True"/>
+                        <local:ModeVisible IsVisible000="True" IsVisible003="True" IsVisible004="True"/>
+                        <local:ModeVisible IsVisible000="True" IsVisible001="True" IsVisible002="True" IsVisible003="True" IsVisible004="True" IsVisible005="True"/>
+                    </x:Array>
+                </ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type local:ModeVisible}">
+                        <ViewCell Height="40">
+                            <Grid HeightRequest="40">
+                                <AbsoluteLayout WidthRequest="65" HeightRequest="38" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Rectangle AbsoluteLayout.LayoutBounds="0,0,65,38" RadiusX="4" RadiusY="4" StrokeThickness="2" Stroke="{StaticResource AppBrush100}" Fill="{StaticResource AppBrush900}"/>
+                                    <Ellipse IsVisible="{Binding IsVisible000}" AbsoluteLayout.LayoutBounds="7,7,11,11" Fill="{StaticResource AppBrush100}"/>
+                                    <Ellipse IsVisible="{Binding IsVisible001}" AbsoluteLayout.LayoutBounds="7,22,11,11" Fill="{StaticResource AppBrush100}"/>
+                                    <Ellipse IsVisible="{Binding IsVisible002}" AbsoluteLayout.LayoutBounds="27,7,11,11" Fill="{StaticResource AppBrush100}"/>
+                                    <Ellipse IsVisible="{Binding IsVisible003}" AbsoluteLayout.LayoutBounds="27,22,11,11" Fill="{StaticResource AppBrush100}"/>
+                                    <Ellipse IsVisible="{Binding IsVisible004}" AbsoluteLayout.LayoutBounds="47,7,11,11" Fill="{StaticResource AppBrush100}"/>
+                                    <Ellipse IsVisible="{Binding IsVisible005}" AbsoluteLayout.LayoutBounds="47,22,11,11" Fill="{StaticResource AppBrush100}"/>
+                                </AbsoluteLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </elements:CommandListBox>
+        </elements:AnimationFadeContainer>
+
+        <!--Flyout-->
+        <elements:AnimationFadeContainer
+            Margin="4,4,4,112"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            StrokeThickness="1"
+            Stroke="{StaticResource AppBrush300}"
+            BackgroundColor="{StaticResource AppColor900}"
+            IsEnabled="{Binding Source={x:Reference BlackButton}, Path=IsChecked, Mode=OneWay}"
+            >
+            <elements:CommandListBox
+                x:Name="BlackListBox" 
+                Margin="4,6" 
+                WidthRequest="160"
+                HeightRequest="90"
+                SelectionMode="Single" 
+               >
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type local:Player}">
+                        <local:Player Icon="&#xE115;" Text="{strings:UI Type=Computer}"/>
+                        <local:Player Icon="&#xE13D;" Text="{strings:UI Type=Players}"/>
+                    </x:Array>
+                </ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type local:Player}">
+                        <ViewCell Height="40">
+                            <Grid HeightRequest="40">
+                                <Label Margin="12,0" VerticalOptions="Center" TextColor="{StaticResource AppColor100}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Icon}" FontSize="16" FontFamily="Segoe UI Symbol"/>
+                                            <Span FontSize="20" Text="{Binding Text}">
+                                                <!--Text-->
+                                            </Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </elements:CommandListBox>
+        </elements:AnimationFadeContainer>
+
+        <!--Flyout-->
+        <elements:AnimationFadeContainer
+            Margin="4,112,4,4"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            StrokeThickness="1"
+            Stroke="{StaticResource AppBrush300}"
+            BackgroundColor="{StaticResource AppColor900}"
+            IsEnabled="{Binding Source={x:Reference RedButton}, Path=IsChecked, Mode=OneWay}"
+            >
+            <elements:CommandListBox
+                x:Name="RedListBox" 
+                Margin="4,6" 
+                WidthRequest="160"
+                HeightRequest="90"
+                SelectionMode="Single" 
+               >
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type local:Player}">
+                        <local:Player Icon="&#xE115;" Text="{strings:UI Type=Computer}"/>
+                        <local:Player Icon="&#xE13D;" Text="{strings:UI Type=Players}"/>
+                    </x:Array>
+                </ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type local:Player}">
+                        <ViewCell Height="40">
+                            <Grid HeightRequest="40">
+                                <Label Margin="12,0" VerticalOptions="Center" TextColor="{StaticResource AppColor100}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Icon}" FontSize="16" FontFamily="Segoe UI Symbol"/>
+                                            <Span FontSize="20" Text="{Binding Text}">
+                                                <!--Text-->
+                                            </Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </elements:CommandListBox>
+        </elements:AnimationFadeContainer>
+
+        <!--Billboard-->
+        <elements:AnimationFadeContainer
+            Margin="12" 
+            HorizontalOptions="FillAndExpand"
+            MaximumWidthRequest="452" 
+            HeightRequest="280"
+            StrokeThickness="1" 
+            Stroke="{StaticResource AppBrush300}" 
+            Background="{StaticResource AppBrush900}"
+            IsEnabled="{Binding State, Mode=OneWay, Converter={strings:Converter Type=ReverseNoneToBooleanConverter}}"
+            >
+            <Grid>
+
+                <!--Step 1-->
+                <Border Margin="2" StrokeThickness="1" Stroke="{StaticResource AppBrush300}" Background="{StaticResource AppBrush900}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="2"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding State, Mode=OneWay, Converter={strings:Converter Type=LoseToVisibilityConverter}}">
+                            <Label Text="{strings:UI Type=Lose}" FontSize="46" HorizontalOptions="Center" TextColor="{StaticResource AppColor100}">
+                                <!--Lose-->
+                            </Label>
+                            <Label FontSize="16" HorizontalOptions="Center" TextColor="{StaticResource AppColor100}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{strings:UI Type=Click}">
+                                            <!--Click-->
+                                        </Span>
+                                        <Span Text="&#xE149;" FontSize="14" FontFamily="Segoe UI Symbol"/>
+                                        <Span Text="{strings:UI Type=ToRestart}">
+                                            <!--ToRestart-->
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding State, Mode=OneWay, Converter={strings:Converter Type=WinToVisibilityConverter}}">
+                            <Label Text="{strings:UI Type=Win}" FontSize="46" HorizontalOptions="Center" TextColor="{StaticResource AppColor100}">
+                                <!--Win-->
+                            </Label>
+                            <Label FontSize="16" HorizontalOptions="Center" TextColor="{StaticResource AppColor100}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{strings:UI Type=Click}">
+                                            <!--Click-->
+                                        </Span>
+                                        <Span Text="&#xE111;" FontSize="14" FontFamily="Segoe UI Symbol"/>
+                                        <Span Text="{strings:UI Type=ToNext}">
+                                            <!--ToNext-->
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding State, Mode=OneWay, Converter={strings:Converter Type=PauseToVisibilityConverter}}">
+                            <Label Text="{strings:UI Type=Pause}" FontSize="46" HorizontalOptions="Center" TextColor="{StaticResource AppColor100}">
+                                <!--Pause-->
+                            </Label>
+                            <Label FontSize="16" HorizontalOptions="Center" TextColor="{StaticResource AppColor100}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{strings:UI Type=Click}">
+                                            <!--Click-->
+                                        </Span>
+                                        <Span Text="&#xE102;" FontSize="14" FontFamily="Segoe UI Symbol"/>
+                                        <Span Text="{strings:UI Type=ToPlay}">
+                                            <!--ToPlay-->
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </VerticalStackLayout>
+
+                        <HorizontalStackLayout Grid.Row="1" Margin="12" HorizontalOptions="Center">
+                            <Button 
+                                Margin="3,0" 
+                                Padding="2"
+                                CornerRadius="4"
+                                WidthRequest="82"
+                                HeightRequest="52"
+                                Text="&#xE149;"
+                                FontSize="32"
+                                FontFamily="Segoe UI Symbol" 
+                                TextColor="{StaticResource AppColor900}"
+                                BackgroundColor="{StaticResource AppColor100}"
+                                CommandParameter="{strings:OptionType Type=Restart}" 
+                                Command="{Binding Command, Mode=OneTime}"
+                                />
+                            <Button 
+                                Margin="3,0" 
+                                Padding="2"
+                                CornerRadius="4"
+                                WidthRequest="82"
+                                HeightRequest="52"
+                                Text="&#xE102;"
+                                FontSize="32"
+                                FontFamily="Segoe UI Symbol" 
+                                TextColor="{StaticResource AppColor900}"
+                                BackgroundColor="{StaticResource AppColor100}"
+                                CommandParameter="{strings:OptionType Type=Continue}" 
+                                Command="{Binding Command, Mode=OneTime}"
+                                IsVisible="{Binding State, Mode=OneWay, Converter={strings:Converter Type=PauseToVisibilityConverter}}"
+                                />
+                            <Button 
+                                Margin="3,0" 
+                                Padding="2"
+                                CornerRadius="4"
+                                WidthRequest="82"
+                                HeightRequest="52"
+                                Text="&#xE111;"
+                                FontSize="32"
+                                FontFamily="Segoe UI Symbol" 
+                                TextColor="{StaticResource AppColor900}"
+                                BackgroundColor="{StaticResource AppColor100}"
+                                CommandParameter="{strings:OptionType Type=Next}" 
+                                Command="{Binding Command, Mode=OneTime}"
+                                />
+                        </HorizontalStackLayout>
+
+                        <!--<Rectangle Grid.Row="2" Margin="0" Fill="{StaticResource AppBrush700}"/>
+
+                        <Grid Grid.Row="3">
+                            <Button 
+                                Padding="12,6" 
+                                HorizontalOptions="Start" 
+                                Text="{strings:UI Type=About}" 
+                                CommandParameter="{strings:OptionType Type=About}" 
+                                Command="{Binding Command}" 
+                                TextColor="{StaticResource AppColor100}"
+                                >
+                                -->
+                        <!--About-->
+                        <!--
+                            </Button>
+                            <Button
+                                Padding="12,6" 
+                                HorizontalOptions="End" 
+                                Text="{strings:UI Type=Tutorial}" 
+                                CommandParameter="{strings:OptionType Type=Tutorial}" 
+                                Command="{Binding Command}" 
+                                TextColor="{StaticResource AppColor100}"
+                                >
+                                -->
+                        <!--Tutorial-->
+                        <!--
+                            </Button>
+                        </Grid>-->
+
+                    </Grid>
+                </Border>
+
+            </Grid>
+        </elements:AnimationFadeContainer>
+
+    </Grid>
 </ContentPage>
