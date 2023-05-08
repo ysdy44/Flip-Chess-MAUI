@@ -1198,6 +1198,8 @@
                 WidthRequest="160"
                 HeightRequest="90"
                 SelectionMode="Single" 
+                CommandParameter="{strings:OptionType Type=UIBlackChanged}" 
+                Command="{Binding Command, Mode=OneTime}"
                >
                 <ListView.ItemsSource>
                     <x:Array Type="{x:Type local:Player}">
@@ -1242,6 +1244,8 @@
                 WidthRequest="160"
                 HeightRequest="90"
                 SelectionMode="Single" 
+                CommandParameter="{strings:OptionType Type=UIRedChanged}" 
+                Command="{Binding Command, Mode=OneTime}"
                >
                 <ListView.ItemsSource>
                     <x:Array Type="{x:Type local:Player}">
