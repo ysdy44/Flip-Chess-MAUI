@@ -33,10 +33,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Assets\AppIcon\appicon.svg" ForegroundFile="Assets\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Assets\AppIcon\appicon.svg" ForegroundFile="Assets\AppIcon\appiconfg.svg" Color="#412D1C" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Assets\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Assets\Splash\splash.svg" Color="#412D1C" BaseSize="128,128" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Assets\Fonts\*" />
