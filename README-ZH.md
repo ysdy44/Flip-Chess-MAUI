@@ -6,6 +6,9 @@
  Windows 10 app 应用商店地址: 
 [购置 翻棋 - 微软商店](https://www.microsoft.com/store/productId/9PFM18FL44FF)   
 
+Android app 下载地址: 
+[com.companyname.flip_chess.apk](/releases/latest/download)   
+
 <br/>
 
 ## 功能说明
