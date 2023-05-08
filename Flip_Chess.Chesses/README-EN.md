@@ -1,12 +1,9 @@
 ﻿## Class library that contains models
  
 This is a class library, and this folder contains some of the basis model types
-
-This AutoAIs folder contains some AI class
-
-This Enums folder contains some enumeration types, such as ChessCount, ChessText
-
-This Extensions folder contains extension classes, such as CollectionExtensions
+- This AutoAIs folder contains some AI class
+- This Enums folder contains some enumeration types, such as ChessCount, ChessText
+- This Extensions folder contains extension classes, such as CollectionExtensions
 
 
 <br/>
