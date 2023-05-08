@@ -1122,7 +1122,7 @@
                         <ViewCell Height="40">
                             <Label 
                                 Margin="12,0"
-                                FontSize="16"
+                                FontSize="15"
                                 FontAttributes="Bold"
                                 LineBreakMode="NoWrap"
                                 VerticalOptions="Center"
