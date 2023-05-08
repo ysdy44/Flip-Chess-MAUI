@@ -116,7 +116,7 @@
                 </Image>
 
                 <Border 
-                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    AbsoluteLayout.LayoutBounds="32,0,28,28"
                     StrokeThickness="2"
                     Stroke="White" 
                     BackgroundColor="Black" 
@@ -137,7 +137,7 @@
                     </Label>
                 </Border>
                 <Border 
-                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    AbsoluteLayout.LayoutBounds="32,60,28,28"
                     StrokeThickness="2"
                     Stroke="White" 
                     BackgroundColor="Black" 
@@ -158,7 +158,7 @@
                     </Label>
                 </Border>
                 <Border 
-                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    AbsoluteLayout.LayoutBounds="32,120,28,28"
                     StrokeThickness="2"
                     Stroke="White" 
                     BackgroundColor="Black" 
@@ -179,7 +179,7 @@
                     </Label>
                 </Border>
                 <Border 
-                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    AbsoluteLayout.LayoutBounds="32,180,28,28"
                     StrokeThickness="2"
                     Stroke="White" 
                     BackgroundColor="Black" 
@@ -272,9 +272,9 @@
                         <FileImageSource File="{Binding RedCemetery[4].ImageSource, Mode=OneWay}"/>
                     </Image.Source>
                 </Image>
-                
+
                 <Border 
-                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    AbsoluteLayout.LayoutBounds="32,0,28,28"
                     StrokeThickness="2"
                     Stroke="White" 
                     BackgroundColor="DarkRed" 
@@ -295,7 +295,7 @@
                     </Label>
                 </Border>
                 <Border 
-                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    AbsoluteLayout.LayoutBounds="32,60,28,28"
                     StrokeThickness="2"
                     Stroke="White" 
                     BackgroundColor="DarkRed" 
@@ -316,7 +316,7 @@
                     </Label>
                 </Border>
                 <Border 
-                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    AbsoluteLayout.LayoutBounds="32,120,28,28"
                     StrokeThickness="2"
                     Stroke="White" 
                     BackgroundColor="DarkRed" 
@@ -337,7 +337,7 @@
                     </Label>
                 </Border>
                 <Border 
-                    AbsoluteLayout.LayoutBounds="32,240,28,28"
+                    AbsoluteLayout.LayoutBounds="32,180,28,28"
                     StrokeThickness="2"
                     Stroke="White" 
                     BackgroundColor="DarkRed" 
