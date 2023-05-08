@@ -7,7 +7,7 @@
 [购置 翻棋 - 微软商店](https://www.microsoft.com/store/productId/9PFM18FL44FF)   
 
 Android app 下载地址: 
-[com.companyname.flip_chess.apk](/releases/latest/download)   
+[com.companyname.flip_chess.apk](/releases/download/v1.0.0)   
 
 <br/>
 
