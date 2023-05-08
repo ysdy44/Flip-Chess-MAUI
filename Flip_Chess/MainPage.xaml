@@ -70,7 +70,7 @@
                 x:Name="BlackCemeteryCanvas"
                 Margin="10,28" 
                 WidthRequest="60" 
-                HeightRequest="300" 
+                HeightRequest="420" 
                 VerticalOptions="End"
                 BackgroundColor="#30000000"
                 >
@@ -112,6 +112,22 @@
                     >
                     <Image.Source>
                         <FileImageSource File="{Binding BlackCemetery[4].ImageSource, Mode=OneWay}"/>
+                    </Image.Source>
+                </Image>
+                <Image
+                    AbsoluteLayout.LayoutBounds="0,300,60,60"
+                    Opacity="{Binding BlackCemetery[5].Opacity, Mode=OneWay}"
+                    >
+                    <Image.Source>
+                        <FileImageSource File="{Binding BlackCemetery[5].ImageSource, Mode=OneWay}"/>
+                    </Image.Source>
+                </Image>
+                <Image
+                    AbsoluteLayout.LayoutBounds="0,360,60,60"
+                    Opacity="{Binding BlackCemetery[6].Opacity, Mode=OneWay}"
+                    >
+                    <Image.Source>
+                        <FileImageSource File="{Binding BlackCemetery[6].ImageSource, Mode=OneWay}"/>
                     </Image.Source>
                 </Image>
 
@@ -220,6 +236,48 @@
                         <!--Text-->
                     </Label>
                 </Border>
+                <Border 
+                    AbsoluteLayout.LayoutBounds="32,300,28,28"
+                    StrokeThickness="2"
+                    Stroke="White" 
+                    BackgroundColor="Black" 
+                    IsVisible="{Binding BlackCemetery[5].Visibility, Mode=OneWay}"
+                    >
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Label 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="White" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{Binding BlackCemetery[5].Count, Mode=OneWay}"
+                        >
+                        <!--Text-->
+                    </Label>
+                </Border>
+                <Border 
+                    AbsoluteLayout.LayoutBounds="32,360,28,28"
+                    StrokeThickness="2"
+                    Stroke="White" 
+                    BackgroundColor="Black" 
+                    IsVisible="{Binding BlackCemetery[6].Visibility, Mode=OneWay}"
+                    >
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Label 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="White" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{Binding BlackCemetery[6].Count, Mode=OneWay}"
+                        >
+                        <!--Text-->
+                    </Label>
+                </Border>
             </AbsoluteLayout>
 
             <!--Cemetery-->
@@ -228,7 +286,7 @@
                 Grid.Column="2"
                 Margin="10,28" 
                 WidthRequest="60" 
-                HeightRequest="300" 
+                HeightRequest="420" 
                 VerticalOptions="Start"
                 BackgroundColor="#30000000"
                 >
@@ -270,6 +328,22 @@
                     >
                     <Image.Source>
                         <FileImageSource File="{Binding RedCemetery[4].ImageSource, Mode=OneWay}"/>
+                    </Image.Source>
+                </Image>
+                <Image
+                    AbsoluteLayout.LayoutBounds="0,300,60,60"
+                    Opacity="{Binding RedCemetery[5].Opacity, Mode=OneWay}"
+                    >
+                    <Image.Source>
+                        <FileImageSource File="{Binding RedCemetery[5].ImageSource, Mode=OneWay}"/>
+                    </Image.Source>
+                </Image>
+                <Image
+                    AbsoluteLayout.LayoutBounds="0,360,60,60"
+                    Opacity="{Binding RedCemetery[6].Opacity, Mode=OneWay}"
+                    >
+                    <Image.Source>
+                        <FileImageSource File="{Binding RedCemetery[6].ImageSource, Mode=OneWay}"/>
                     </Image.Source>
                 </Image>
 
@@ -374,6 +448,48 @@
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
                         Text="{Binding RedCemetery[4].Count, Mode=OneWay}"
+                        >
+                        <!--Text-->
+                    </Label>
+                </Border>
+                <Border 
+                    AbsoluteLayout.LayoutBounds="32,300,28,28"
+                    StrokeThickness="2"
+                    Stroke="White" 
+                    BackgroundColor="DarkRed" 
+                    IsVisible="{Binding RedCemetery[5].Visibility, Mode=OneWay}"
+                    >
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Label 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="White" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{Binding RedCemetery[5].Count, Mode=OneWay}"
+                        >
+                        <!--Text-->
+                    </Label>
+                </Border>
+                <Border 
+                    AbsoluteLayout.LayoutBounds="32,360,28,28"
+                    StrokeThickness="2"
+                    Stroke="White" 
+                    BackgroundColor="DarkRed" 
+                    IsVisible="{Binding RedCemetery[6].Visibility, Mode=OneWay}"
+                    >
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Label 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="White" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{Binding RedCemetery[6].Count, Mode=OneWay}"
                         >
                         <!--Text-->
                     </Label>
