@@ -10,6 +10,8 @@ Android app download address: releases (**com.companyname.flip_chess.apk**)
 
 mac OS app download address: releases (**Flip_Chess-1.0.pkg**)
 
+![](ScreenShot/thumbail.jpg)
+
 <br/>
 
 ## Function description

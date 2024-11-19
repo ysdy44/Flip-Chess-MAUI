@@ -10,6 +10,7 @@ Android app 下载地址: releases (**com.companyname.flip_chess.apk**)
 
 mac OS app 下载地址: releases (**Flip_Chess-1.0.pkg**)
 
+![](ScreenShot/thumbail.jpg)
 
 <br/>
 
