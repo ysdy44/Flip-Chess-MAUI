@@ -4,7 +4,7 @@
 
  
  Windows 10 app store address: 
-[Buy Flip Chess - Microsoft Store](https://www.microsoft.com/store/productId/9PFM18FL44FF)   
+[Buy Flip Chess - Microsoft Store](https://apps.microsoft.com/detail/9pfm18fl44ff)   
 
 Android app download address: releases (**com.companyname.flip_chess.apk**)
 
